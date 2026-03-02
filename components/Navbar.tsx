@@ -1,27 +1,36 @@
-import { NextPage } from 'next'
-import { Delicious_Handrawn, Libre_Bodoni } from 'next/font/google'
+import { NextPage } from "next";
+import { Delicious_Handrawn, Libre_Bodoni } from "next/font/google";
 
 interface Props {
-    setActionOpen: React.Dispatch<React.SetStateAction<boolean>>
+  setActionOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const logoFont = Libre_Bodoni({
-    variable: '--font-libre-bodoni',
-    subsets: ['latin'],
-})
+  variable: "--font-libre-bodoni",
+  subsets: ["latin"],
+});
 
-const Navbar: NextPage<Props> = ({setActionOpen}:Props) => {
-  return <div className='w-full mx-auto flex justify-between px-10 items-center bg-sky-300 rounded-md h-[10vh]'>
-    <div className={`text-3xl text-[#f1f1f1] ${logoFont.className}`}>
-        Logo
-    </div>
-    <div className='hidden md:block'>
-        <input type="text" placeholder='Search' className='bg-white focus:outline-0 rounded xl:w-100 p-2' />
-    </div>
-    <div onClick={()=>setActionOpen((prev)=>!prev)} className='bg-white w-10 h-10 rounded-full'>
+const Navbar: NextPage<Props> = ({ setActionOpen }: Props) => {
+  return (
+    <div className="w-full flex select-none justify-between items-center px-8 py-4 bg-white/80 backdrop-blur-md border border-white shadow-md rounded-3xl">
+      <div className="text-2xl font-bold text-[#1F7A63]">GreenDash</div>
 
-    </div>
-  </div>
-}
+      <div className="hidden md:block w-[40%]">
+        <input
+          type="text"
+          placeholder="Search projects, tasks..."
+          className="w-full bg-[#F1F5F4] focus:outline-none focus:ring-2 focus:ring-[#7ED6B2] rounded-xl px-4 py-2 text-sm"
+        />
+      </div>
 
-export default Navbar
+      <div
+        onClick={() => setActionOpen((prev) => !prev)}
+        className="bg-[#1F7A63] text-white w-10 h-10 rounded-full flex items-center justify-center cursor-pointer hover:bg-[#16624F] transition"
+      >
+        ☰
+      </div>
+    </div>
+  );
+};
+
+export default Navbar;
